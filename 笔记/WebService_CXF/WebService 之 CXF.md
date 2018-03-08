@@ -1,6 +1,22 @@
 ## WebService 之  CXF
 
-#### 一、WebService 之 之 CXF 
+## [目录]
+
+* [一、简介](#一、简介)
+  * [1.1 WebService 简介](#1.1 WebService 简介)
+  * [1.2 CXF 简介](#1.2 CXF 简介)
+* [二、使用 CXF 开发应用](#二、使用 CXF 开发应用)
+  * [2.1 使用 CXF  开发 WebService  服务器端接口](#2.1 使用 CXF  开发 WebService  服务器端接口)
+  * [2.2 使用 CXF  开发 WebService](#2.2 使用 CXF  开发 WebService)
+  * [2.3 CXF  处理 JavaBean 以及复合类型](#2.3 CXF  处理 JavaBean 以及复合类型)
+  * [2.4 CXF  处理一些 Map 等复杂类型](#2.4 CXF  处理一些 Map 等复杂类型)
+  * [2.5 CXF  添加拦截器(自带的)](#2.5 CXF  添加拦截器(自带的))
+  * [2.6 CXF  添加自定义拦截器](#2.6 CXF  添加自定义拦截器)
+* [三、Spring  整合 CXF](#三、Spring  整合 CXF)
+
+
+
+#### 一、简介 
 
 ##### 1.1 WebService 简介
 
@@ -14,7 +30,7 @@
 >
 >开发人员一般就是在具体平台开发webservice接口，以及调用webservice接口；每种开发语言都有自己的webservice实现框架。比如Java 就有 Apache Axis1、Apache Axis2、Codehaus XFire、**Apache CXF**、Apache Wink、Jboss  RESTEasyd等等...
 
-![Webservice](E:\资料\java\JAVAWEB\笔记\Webservice.jpg)
+![Webservice](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/%E7%AC%94%E8%AE%B0/WebService_CXF/photo/Webservice.jpg)
 
 ##### 1.2 CXF 简介 
 
@@ -99,11 +115,11 @@ public class Server {
 
 * 上面的 Server 不变，然后创建 WB_Client 客户端，用 cmd 进入 该项目的代码地址，然后利用 apache-cxf-3.1.5 工具输入指令，动态生成代码
 
-![WB_cmd](E:\资料\java\JAVAWEB\笔记\WB_cmd.PNG)
+![WB_cmd](https://github.com/volewu/JAVA-Learn/blob/master/%E7%AC%94%E8%AE%B0/WebService_CXF/photo/WB_cmd.PNG?raw=true)
 
 * 生成的代码目录
 
-![WB_code](E:\资料\java\JAVAWEB\笔记\WB_code.PNG)
+![WB_code](https://github.com/volewu/JAVA-Learn/blob/master/%E7%AC%94%E8%AE%B0/WebService_CXF/photo/WB_code.PNG?raw=true)
 
 * 创建 Client.java 
 
@@ -591,7 +607,7 @@ public class AddHeaderInterceptor extends AbstractPhaseInterceptor<SoapMessage> 
 
 * 使用 Maven 创建 WB_Spring_CXF 项目
 
-![WB_Spring_CXF](E:\资料\java\JAVAWEB\笔记\WB_Spring_CXF.PNG)
+![WB_Spring_CXF](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/%E7%AC%94%E8%AE%B0/WebService_CXF/photo/WB_Spring_CXF.PNG)
 
 * 在 pom.xml 在导入相关 jar
 
@@ -763,7 +779,7 @@ public class AddHeaderInterceptor extends AbstractPhaseInterceptor<SoapMessage> 
 
 * 运行---
 
-![WB_Spring_CXF_run](E:\资料\java\JAVAWEB\笔记\WB_Spring_CXF_run.PNG)
+![WB_Spring_CXF_run](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/%E7%AC%94%E8%AE%B0/WebService_CXF/photo/WB_Spring_CXF_run.PNG)
 
 * Client 启动时，需要重新用 wdls 工具动态生成代码。有些方法会改变
 

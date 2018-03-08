@@ -12,7 +12,7 @@
 
 * 本次项目都是采用 Maven 来实现的 ，下图好似项目结构
 
-![Shiro_helloworld](E:\资料\java\JAVAWEB\笔记\Shiro_helloworld.PNG)
+![Shiro_helloworld](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Shiro/photo/Shiro_helloworld.PNG)
 
 * 在 pom.xml 中配置需要的 jar
 
@@ -112,7 +112,7 @@ public class HelloWorld {
 
 ##### 2.2 身份认证流程
 
-![shiro_身份认证流程](E:\资料\java\JAVAWEB\笔记\shiro_身份认证流程.PNG)
+![shiro_身份认证流程](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Shiro/photo/shiro_身份认证流程.PNG)
 
 ##### 2.3 Realm&JDBC Reaml
 
@@ -386,7 +386,7 @@ public class ShiroUtil {
 
 ##### 3.4 授权流程 
 
-![shiro_授权流程](E:\资料\java\JAVAWEB\笔记\shiro_授权流程.PNG)
+![shiro_授权流程](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Shiro/photo/shiro_授权流程.PNG)
 
 
 
@@ -396,7 +396,7 @@ public class ShiroUtil {
 
 * 项目案例截图
 
-![shiro_web](E:\资料\java\JAVAWEB\笔记\shiro_web.PNG)
+![shiro_web](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Shiro/photo/shiro_web.PNG)
 
 * 在 pom.xml 中配置相关 Jar 
 
@@ -780,7 +780,7 @@ public class LoginServlet extends HttpServlet {
 
 * 项目结构
 
-![shiro_myRealm](E:\资料\java\JAVAWEB\笔记\shiro_myRealm.PNG)
+![shiro_myRealm](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Shiro/photo/shiro_myRealm.PNG)
 
 * 创建数据库与相关的表 db_shiro.sql
 
@@ -1160,7 +1160,7 @@ UsernamePasswordToken token=new UsernamePasswordToken(userName, CryptographyUtil
 
 **eg: 项目目录**(报错并没影响)
 
-![Shiro_Spring](E:\资料\java\JAVAWEB\笔记\Shiro_Spring.PNG)
+![Shiro_Spring](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Shiro/photo/Shiro_Spring.PNG)
 
 * 在 pom.xml 中导入相关的 jar
 

@@ -1,19 +1,6 @@
 ## WebService 之  CXF
 
-## [目录]
-
-* [一、简介](#一、简介)
-  * [1.1 WebService 简介](#1.1 WebService 简介)
-  * [1.2 CXF 简介](#1.2 CXF 简介)
-* [二、使用 CXF 开发应用](#二、使用 CXF 开发应用)
-  * [2.1 使用 CXF  开发 WebService  服务器端接口](#2.1 使用 CXF  开发 WebService  服务器端接口)
-  * [2.2 使用 CXF  开发 WebService](#2.2 使用 CXF  开发 WebService)
-  * [2.3 CXF  处理 JavaBean 以及复合类型](#2.3 CXF  处理 JavaBean 以及复合类型)
-  * [2.4 CXF  处理一些 Map 等复杂类型](#2.4 CXF  处理一些 Map 等复杂类型)
-  * [2.5 CXF  添加拦截器(自带的)](#2.5 CXF  添加拦截器(自带的))
-  * [2.6 CXF  添加自定义拦截器](#2.6 CXF  添加自定义拦截器)
-* [三、Spring  整合 CXF](#三、Spring  整合 CXF)
-
+[TOC]
 
 
 #### 一、简介 

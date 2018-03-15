@@ -152,7 +152,7 @@ public class ActivitiTest01 {
 
 * 运行测试项目就会在 db_activiti 中生成需要的 25 张表
 
-![activiti_25](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\activiti_25.PNG)
+![activiti_25](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/activiti_25.PNG)
 
 
 
@@ -175,7 +175,7 @@ public class ActivitiTest01 {
 
 ###### 1.2.3 初识 Activiti 流程设计工具
 
-![activiti_tool](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\activiti_tool.gif)
+![activiti_tool](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/activiti_tool.gif)
 
 ###### 1.2.4 Activiti HelloWorld 实现（代码层次）
 
@@ -499,7 +499,7 @@ public class ProcessDefinitionTest {
 
 ##### 3.1 构建学生请假审批流程
 
-![StudentLeaveProcess](F:\JavaDemo\Activiti01\src\main\resources\diagrams\StudentLeaveProcess.png)
+![StudentLeaveProcess](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/sample/Activiti01/src/main/resources/diagrams/StudentLeaveProcess.png)
 
 ##### 3.2 执行对象概念
 
@@ -1200,11 +1200,11 @@ public class VariableTest4 {
 
   审批，我们需要让班主任也审批下。 所以在班长审批的时候，就会有分支；
 
-![StudentLeaveProcess2](F:\JavaDemo\Activiti01\src\main\resources\diagrams\StudentLeaveProcess2.png)
+![StudentLeaveProcess2](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/sample/Activiti01/src/main/resources/diagrams/StudentLeaveProcess2.png)
 
 * 设置连线表达式，类似 el 表达式
 
-![连线表达式](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\连线表达式.PNG)
+![连线表达式](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/连线表达式.PNG)
 
 * 新建 LineTest.java 测试类
 
@@ -1292,15 +1292,15 @@ public class LineTest {
 
 * 绘制新的流程图
 
-![StudentLeaveProcess3](F:\JavaDemo\Activiti01\src\main\resources\diagrams\StudentLeaveProcess3.png)
+![StudentLeaveProcess3](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/sample/Activiti01/src/main/resources/diagrams/StudentLeaveProcess3.png)
 
 * 添加表达式
 
-![排它网关_2](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\排它网关_2.PNG)
+![排它网关_2](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/排它网关_2.PNG)
 
 * 选择排他网关，设置默认执行的线路为校长那条线路；
 
-![排它网关_3](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\排它网关_3.PNG)
+![排它网关_3](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/排它网关_3.PNG)
 
 * 测试 类 ExclusiveGatewayTest.java
 
@@ -1387,7 +1387,7 @@ public class ExclusiveGatewayTest {
 
 * 创建新的流程图，并行执行，不用添加条件
 
-![StudentLeaveProcess4](F:\JavaDemo\Activiti01\src\main\resources\diagrams\StudentLeaveProcess4.png)
+![StudentLeaveProcess4](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/sample/Activiti01/src/main/resources/diagrams/StudentLeaveProcess4.png)
 
 * 执行测试
 
@@ -1465,7 +1465,7 @@ public class ExclusiveGatewayTest {
 
 * 流程图 StudentLeaveProcess5.bpmn
 
-![个人任务_直接写死](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\个人任务_直接写死.PNG)
+![个人任务_直接写死](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/个人任务_直接写死.PNG)
 
 * 测试 AssignTest1.java
 
@@ -1545,7 +1545,7 @@ public class AssignTest1 {
 
 * 流程图 StudentLeaveProcess6.bpmn
 
-![个人任务_使用流程变量](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\个人任务_使用流程变量.PNG)
+![个人任务_使用流程变量](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/个人任务_使用流程变量.PNG)
 
 * 测试 AssignTest2.java
 
@@ -1647,7 +1647,7 @@ public class MyTaskListener implements TaskListener{
 
 * 流程图 StudentLeaveProcess7.bpmn
 
-![个人任务_TaskListener 监听实现](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\个人任务_TaskListener 监听实现.PNG)
+![个人任务_TaskListener 监听实现](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/个人任务_TaskListener 监听实现.PNG)
 
 * 测试 AssignTest3.java
 
@@ -1729,7 +1729,7 @@ public class AssignTest3 {
 
 * 流程图 MultiUserProcess.bpmn
 
-![多用户_直接写死](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\多用户_直接写死.PNG)
+![多用户_直接写死](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/多用户_直接写死.PNG)
 
 * 测试类 AssignTest1.java
 
@@ -1810,7 +1810,7 @@ public class AssignTest1 {
 
 * 流程图 MultiUserProcess2.bpmn
 
-![多用户_流程变量](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\多用户_流程变量.PNG)
+![多用户_流程变量](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/多用户_流程变量.PNG)
 
 * 测试 AssignTest2.java
 
@@ -1908,7 +1908,7 @@ public class MyTaskListener implements TaskListener{
 
 * 流程图 MultiUserProcess3.bpmn
 
-![多用户_TaskListener](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\多用户_TaskListener.PNG)
+![多用户_TaskListener](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/多用户_TaskListener.PNG)
 
 * 测试 AssignTest3.java
 
@@ -1989,7 +1989,7 @@ public class AssignTest3 {
 
 * 组任务主要靠 **act_id_user**、**act_id_group**、**act_id_membership** 这三张表，用 **IdentityService** 来控制。
 
-![组任务_表](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\组任务_表.PNG)
+![组任务_表](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/组任务_表.PNG)
 
 * IdentityTest.java
 
@@ -2074,7 +2074,7 @@ public class IdentityTest {
 
 * 流程图 GroupProcess.bpmn
 
-![组任务_直接流程图](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\组任务_直接流程图.PNG)
+![组任务_直接流程图](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/组任务_直接流程图.PNG)
 
 * AssignTest1.java
 
@@ -2155,7 +2155,7 @@ public class AssignTest1 {
 
 * 流程图 GroupProcess2.bpmn
 
-![组任务_使用流程变量](E:\githubSample\JAVA-Learn\笔记\Activiti\photo\组任务_使用流程变量.PNG)
+![组任务_使用流程变量](https://raw.githubusercontent.com/volewu/JAVA-Learn/master/笔记/Activiti/photo/组任务_使用流程变量.PNG)
 
 
 

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.dao.FileDao">
+	<resultMap type="File" id="FileResult">
+		<result property="fileid" column="fileid"/>
+		<result property="filename" column="filename"/>
+		<result property="realname" column="realname"/>
+	</resultMap>
+	
+	<select id="findAllFile" parameterType="map" resultMap="FileResult" >
+	   select * from (select a.*,rownum rn from (select * from T_FILEMANAGE) A where rownum &lt;=#{size}) 
+	   
+	   <where>
+ 		 rn &gt;#{start}
+ 		<if test="filename!=null">
+ 			and realname like #{filename}
+ 		</if> 
+    	
+ 	</where> 
+	   
+	</select>
+	
+	<select id="countAllFile" parameterType="map" resultType="int" >
+		 select count(*) from T_FILEMANAGE 
+ 		
+ 		<if test="filename!=null">
+ 		 where realname like #{filename}
+ 		</if> 
+    	
+		 
+	</select>
+	
+	<insert id="addFile" parameterType="map">
+	   insert into T_FILEMANAGE values(file_seq.nextval,#{fileName},#{realName})
+	</insert>
+	
+	<delete id="deleteFiles" parameterType="String" >
+		delete from T_FILEMANAGE where fileid in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete> 
+	
+	<select id="findById" parameterType="string" resultMap="FileResult" >
+	  select * from T_FILEMANAGE where fileid=#{id}
+	</select>
+</mapper> 

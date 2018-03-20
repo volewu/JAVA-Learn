@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.dao.StrainGageDao">
+	
+	<resultMap type="StrainGage" id="StrainGageResult">
+		<result property="STRAINID" column="STRAINID"/>
+		<result property="BU" column="BU"/>
+		<result property="ZG" column="ZG"/>
+		<result property="APPLYMAN" column="APPLYMAN"/>
+		<result property="ICNUM" column="ICNUM"/>
+		<result property="APPLYDATE" column="APPLYDATE"/>
+		<result property="PHONE" column="PHONE"/>
+		<result property="EXPENSESCODE" column="EXPENSESCODE"/>
+		<result property="REASON" column="REASON"/>
+		<result property="PROJECTNAME" column="PROJECTNAME"/>
+		<result property="LOC1" column="LOC1"/>
+		<result property="LOC2" column="LOC2"/>
+		<result property="LOC3" column="LOC3"/>
+		<result property="LOC4" column="LOC4"/>
+		<result property="LOC5" column="LOC5"/>
+		<result property="LOC6" column="LOC6"/>
+		<result property="LOC7" column="LOC7"/>
+		<result property="PROJECTNAME2" column="PROJECTNAME2"/>
+		<result property="LOC8" column="LOC8"/>
+		<result property="LOC9" column="LOC9"/>
+		<result property="LOC10" column="LOC10"/>
+		<result property="LOC11" column="LOC11"/>
+		<result property="LOC12" column="LOC12"/>
+		<result property="LOC13" column="LOC13"/>
+		<result property="LOC14" column="LOC14"/>
+		<result property="SENSORQUANTITY" column="SENSORQUANTITY"/>
+		<result property="SURPORTQUANTITY" column="SURPORTQUANTITY"/>
+		<result property="LOANQUANTITY" column="LOANQUANTITY"/>
+		<result property="SENSORAMOUNT" column="SENSORAMOUNT"/>
+		<result property="SURPORTAMOUNT" column="SURPORTAMOUNT"/>
+		<result property="LOANAMOUNT" column="LOANAMOUNT"/>
+		<result property="EMAIL" column="EMAIL"/>
+		<result property="TOTALAMOUNT" column="TOTALAMOUNT"/>
+		<result property="STATE" column="STATE"/>
+		<result property="PROCESSINSTANCEID" column="PROCESSINSTANCEID"/>
+	 </resultMap>
+	
+	<insert id="add" parameterType="map">
+	
+		insert into T_STRAINGAGE values(STRAIN_SEQ.nextval,#{BU},#{APPLYMAN},#{ICNUM},#{APPLYDATE},#{PHONE},#{EXPENSESCODE},#{REASON},#{PROJECTNAME},#{LOC1},#{LOC2},#{LOC3},#{LOC4},#{LOC5},#{LOC6},#{LOC7},#{PROJECTNAME2},#{LOC8},#{LOC9},#{LOC10},#{LOC11},#{LOC12},#{LOC13},#{LOC14},#{SENSORQUANTITY},#{SURPORTQUANTITY},#{LOANQUANTITY},#{SENSORAMOUNT},#{SURPORTAMOUNT},#{LOANAMOUNT},#{EMAIL},#{TOTALAMOUNT},#{STATE},#{PROCESSINSTANCEID},#{ZG})
+	</insert>
+	
+	<select id="List" resultMap="StrainGageResult" parameterType="map">
+	   select * from (select a.*,rownum rn from (select * from T_STRAINGAGE) A where rownum &lt;=#{size}) where rn &gt;#{start}  
+	</select>
+	
+	<select id="getTotal" resultType="int">
+	 	SELECT COUNT(*) FROM T_STRAINGAGE
+	</select>
+	
+	<select id="findById" parameterType="Integer" resultMap="StrainGageResult">
+		select * from T_STRAINGAGE where STRAINID=#{id}
+	</select>
+	
+	<update id="updateStrainGage" parameterType="StrainGage">
+		update T_STRAINGAGE
+		<set>
+			<if test="STATE!=null and STATE!='' ">
+				STATE=#{STATE},
+			</if>
+			<if test="PROCESSINSTANCEID!=null and PROCESSINSTANCEID!='' ">
+				PROCESSINSTANCEID=#{PROCESSINSTANCEID},
+			</if>
+		</set>
+		where STRAINID=#{STRAINID}
+	</update>
+	
+</mapper> 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.dao.ArrangeDao">
+	<resultMap type="Arrange" id="ArrangeResult">
+		<result property="arrid" column="arrid"/>
+		<result property="applybu" column="applybu"/>
+		<result property="applydate" column="applydate"/>
+		<result property="projectname" column="projectname"/>
+		<result property="starttime" column="starttime"/>
+		<result property="endtime" column="endtime"/>
+		<result property="handlerstate" column="handlerstate"/>
+	</resultMap>
+	
+	<select id="findAllList" parameterType="map" resultMap="ArrangeResult" >
+	   select * from (select a.*,rownum rn from (select * from T_ARRANGEMENT) A where rownum &lt;=#{size}) where rn &gt;#{start}
+	   order by to_date(applydate,'yyyy-mm-dd') asc 
+	</select>
+	
+	<select id="countAllList" parameterType="map" resultType="int" >
+		 select count(*) from T_ARRANGEMENT 
+		 
+		 
+	</select>
+
+	<insert id="addArrange" parameterType="map">
+	 	insert into T_ARRANGEMENT values(ARR_SEQ.nextval,#{applybu},#{applydate},#{projectname},#{starttime},#{endtime},#{handlerstate})
+	</insert>
+
+    <update id="updateArrange" parameterType="map">
+      update T_ARRANGEMENT set starttime=#{starttime},endtime=#{endtime},handlerstate=#{handlerstate} where arrid=#{arrid}
+    </update>
+    
+    <delete id="deleteArrange"  parameterType="map">
+       delete from T_ARRANGEMENT where arrid=#{arrid}
+    </delete>
+</mapper> 

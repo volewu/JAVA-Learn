@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.dao.ArrangeResDao">
+	<resultMap type="ArrangeRes" id="ArrangeResResult">
+		<result property="arrid" column="arrid"/>
+		<result property="applybu" column="applybu"/>
+		<result property="applydate" column="applydate"/>
+		<result property="projectname" column="projectname"/>
+		<result property="starttime" column="starttime"/>
+		<result property="endtime" column="endtime"/>
+		<result property="handlerstate" column="handlerstate"/>
+	</resultMap>
+	
+	<select id="findAllList" parameterType="map" resultMap="ArrangeResResult" >
+	   select * from (select a.*,rownum rn from (select * from T_ARRANGEMENTRESULT) A where rownum &lt;=#{size}) 
+	 
+	    <where>
+ 		 rn &gt;#{start}
+ 		<if test="projectname!=null">
+ 			and projectname like #{projectname}
+ 		</if> 
+    	
+ 	</where> 
+	     order by to_date(applydate,'yyyy-mm-dd') asc 
+	</select>
+	
+	<select id="countAllList" parameterType="map" resultType="int" >
+		 select count(*) from T_ARRANGEMENTRESULT 
+		 <if test="projectname!=null">
+ 		 where projectname like #{projectname}
+ 		</if>
+	</select>
+
+    <insert id="addArrangeRes" parameterType="map">
+    	insert into T_ARRANGEMENTRESULT values(ARR_RES_SEQ.nextval,#{applybu},#{applydate},#{projectname},#{starttime},#{endtime},#{handlerstate})
+    </insert>
+</mapper> 

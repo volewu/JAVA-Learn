@@ -144,6 +144,10 @@ select * from emp t,dept d where t.deptno=d.deptno;
 
 ##### 10. Oracle  数据类型及函数 
 
+> * 字符串类型
+> * 数值类型
+> * 日期类型
+
 * **字符串类型及函数**
 
 > 字符类型分 3 种，**char(n)** 、**varchar(n)**、**varchar2(n)**；
@@ -281,4 +285,290 @@ To_char 将日期转换成字符串：
 select to_char(d1,'YYYY-MM-DD') from t_date where id=1;
 select to_char(d1,'YYYY-MM-DD HH24:MI:SS') from t_date where id=1;
 ```
+
+* **其他常用处理函数**
+
+```sql
+常用的聚合函数：
+Max 求最大值：select max(sal) from emp ;
+
+Min 求最小值：select min(sal) from emp ;
+
+Avg 求平均值：select avg(sal) from emp ;
+
+Sum 求和：select sum(sal) from emp ;
+
+Count 统计记录数：select count(ename) from emp ;
+
+Nvl 空值处理：(字段，赋值的参数)
+select ename,nvl(sal,0) from emp;
+
+rownum
+Oracle 分页：select * from (select a.*,rownum rn from (select * from emp) Awhere rownum<=10) where rn>5;
+
+Oracle 中的运算：
+select 2+1 from dual;
+select 2-1 from dual;
+select 2*1 from dual;
+select 2/1 from dual;
+
+条件判断式：
+Between and 范围查询：
+select * from emp where sal between 900 and 1500;
+select * from emp where sal>=900 and sal<=1500;
+
+In 集合范围：
+select ename,hiredate from emp where ename in (select distinct ename from bonus)
+
+Like 模糊查询：
+select * from emp where ename like '%M%'
+select * from emp where ename like 'M%'
+select * from emp where ename like '_M%'
+```
+
+##### 11. Oracle  视图
+
+> 视图是虚表，没有具体物理数据，是通过实体表的一种计算映射逻辑。主要就是为了方便和数据安全；并且试图都是只读视图；
+
+```sql
+创建视图：Create view 视图名称 as 查询语句
+create view v_emp1 as select ename,job from emp;
+
+有些用户没有权限创建视图，使用需要赋予权限
+查看用户的角色: select * from user_role_privs;
+查看角色对应的权限: SELECT * FROM DBA_SYS_PRIVS WHERE GRANTEE='DBA'; 
+授予用户dba权限: grant dba to scott;
+
+修改视图
+create or replace view v_emp1 as
+select ename,job,sal,可增加字段 from emp;
+
+使用视图: 和普通 sql 语句一样
+查询：select * from v_emp1; select * from v_emp1 where ename like '%M%';
+修改：update v_emp1 set job='销售' where ename='sb';
+添加：insert into v_emp2 values('2222','sb2','技术');
+删除：delete from v_emp2 where empno=2222
+
+只读视图：在后面加上 with read only
+Create view 视图名称 as 查询语句 with read only ;
+```
+
+##### 12. Oracle  约束
+
+> * 主键约束 (Primary)
+> * 外键约束 (Foreign)
+> * 唯一性约束 (Unique)
+> * 检查约束 (Condition)
+> * 默认值约束 (Default)
+> * 非空约束 (Nullable)
+
+##### 13. Oracle  控制语句
+
+```sql
+/*IF  条件语句*/
+SQL> set serverout on;
+SQL> declare n number:=1;
+  2          v varchar2(20):='world';
+  3  begin
+  4     dbms_output.put_line('hello'||n||v);
+  5  end;
+  6  /
+hello1world
+PL/SQL procedure successfully completed
+
+SQL> set serverout on;
+SQL> declare emp_count number;
+  2  begin
+  3    select count(*) into emp_count from emp where sal>=3000;
+  4    if emp_count>0 then
+  5      dbms_output.put_line('有'||emp_count||'个员工的基本薪资大于等于3000');
+  6    else
+  7      dbms_output.put_line('没有员工的基本薪资大于等于3000');
+  8    end if;
+  9  end;
+ 10  /
+有3个员工的基本薪资大于等于3000
+PL/SQL procedure successfully completed
+
+SQL> set serverout on;
+SQL> declare emp_count number;
+  2  begin
+  3    select count(*) into emp_count from emp where sal>=3000;
+  4    if emp_count=1 then
+  5      dbms_output.put_line('有1个员工的基本薪资大于等于3000');
+  6    else if emp_count>1 then
+  7      dbms_output.put_line('有超过1个员工的基本薪资大于等于3000');
+  8    else
+  9      dbms_output.put_line('没有员工的基本薪资大于等于3000');
+ 10    end if;
+ 11    end if;
+ 12  end;
+ 13  
+ 14  /
+有超过1个员工的基本薪资大于等于3000
+PL/SQL procedure successfully completed
+
+/*CASE WHEN 流程控制语句*/
+SQL> set serverout on;
+SQL> declare emp_count number;
+  2  begin
+  3    select count(*) into emp_count from emp where sal>=3000;
+  4    case emp_count
+  5      when 0 then dbms_output.put_line('没有员工的基本薪资大于等于3000');
+  6      when 1 then dbms_output.put_line('有1个员工的基本薪资大于等于3000');
+  7      when 2 then dbms_output.put_line('有2个员工的基本薪资大于等于3000');
+  8      when 3 then dbms_output.put_line('有3个员工的基本薪资大于等于3000');
+  9      else dbms_output.put_line('超过3个员工的基本薪资大于等于3000');
+ 10    end case;
+ 11  end;
+ 12  /
+有3个员工的基本薪资大于等于3000
+PL/SQL procedure successfully completed
+
+/*无条件循环 loop*//
+SQL> set serverout on;
+SQL> declare g_id number:=2;
+  2          g_losal number;
+  3          g_hisal number;
+  4  begin
+  5    loop
+  6      if(g_id>4) then
+  7        exit;
+  8      end if;
+  9  
+ 10      select losal,hisal into g_losal,g_hisal from salgrade where grade=g_id;
+ 11      dbms_output.put_line(g_id || '等级的最低薪资'|| g_losal || '，最高薪资：' || g_hisal);
+ 12  
+ 13      g_id:=g_id+1;
+ 14  
+ 15    end loop;
+ 16  end;
+ 17  /
+2等级的最低薪资1201，最高薪资：1400
+3等级的最低薪资1401，最高薪资：2000
+4等级的最低薪资2001，最高薪资：3000
+PL/SQL procedure successfully completed
+
+/*while 循环*/ 
+SQL> set serverout on;
+SQL> declare g_id number:=2;
+  2          g_losal number;
+  3          g_hisal number;
+  4  begin
+  5  
+  6    while g_id<5 loop
+  7  
+  8       select losal,hisal into g_losal,g_hisal from salgrade where grade=g_id;
+  9       dbms_output.put_line(g_id || '等级的最低薪资'|| g_losal || '，最高薪资：' || g_hisal);
+ 10       g_id:=g_id+1;
+ 11    end loop;
+ 12  
+ 13  end;
+ 14  /
+2等级的最低薪资1201，最高薪资：1400
+3等级的最低薪资1401，最高薪资：2000
+4等级的最低薪资2001，最高薪资：3000
+PL/SQL procedure successfully completed
+
+/*for 循环*/
+SQL> set serverout on;
+SQL> declare g_losal number;
+  2          g_hisal number;
+  3  begin
+  4    for g_id in 2..4 loop
+  5      select losal,hisal into g_losal,g_hisal from salgrade where grade=g_id;
+  6      dbms_output.put_line(g_id || '等级的最低薪资'|| g_losal || '，最高薪资：' || g_hisal);
+  7    end loop;
+  8  end;
+  9  /
+2等级的最低薪资1201，最高薪资：1400
+3等级的最低薪资1401，最高薪资：2000
+4等级的最低薪资2001，最高薪资：3000
+PL/SQL procedure successfully completed
+```
+
+##### 14. Oracle  游标
+
+> 使用游标，我们可以对具体操作数据，比如查询的结果，对行，列数据进行更加细致的处理。以及对其他 DML操作进行判断等操作.
+
+* 显示游标
+* 隐式游标
+* 动态游标
+
+##### 15. Oracle  触发器
+
+> 具备某些条件，由数据库自动执行的一些 DML 操作行为。
+
+* 语句触发器
+* 行触发器
+* 触发器禁用和开启
+
+##### 16. Oracle    函数与存储过程
+
+* Oracle  自定义函数
+* Oracle   存储过程
+* 程序包
+
+##### 17. Oracle  用户，角色和权限
+
+* **Oracle  用户**
+
+> Oracle 用户分两种，一种是系统用户 sys system ；另外一种是普通用户；
+> 视图 **dba_users** 存储着所有用户信息；
+
+```sql
+创建用户：
+Create user 用户名 identified by 密码 default tablespace 表空间
+
+授予 session 权限：
+grant create session to TEST;
+
+锁定和开启帐号：
+alter user TEST account lock / unlock ;
+
+修改用户密码：
+alter user TEST identified by 123 ;
+
+删除用户：
+drop user TEST cascade ;
+删除用户，并且把用户下的对象删除，比如表，视图，触发器等。
+```
+
+* **Oracle  权限**
+
+> Oracle 权限分为**系统权限**和**对象权限**；
+> 系统权限是 Oracle 内置的，与具体对象无关的权限，比如创建表的权限，连接数据库权限；
+> 对象权限就是对具体对象，比如表，视图，触发器等的操作权限；
+
+```properties
+系统权限视图：system_privilege_map
+权限分配视图：dba_sys_privs
+回收系统权限：revoke 权限 from 用户
+```
+
+```properties
+对象权限分配
+用户表权限视图：dba_tab_privs
+给对象授权： grant 权限 on 对象 to 用户 with grant option;
+回收权限：revoke 对象权限 on 对象 from 用户；
+```
+
+* **Oracle  角色**
+
+> 角色是**权限的集合**；可以给用户直接分配角色，不需要一个一个分配权限；
+> 语法：使用视图 **dba_roles** 可以查找角色信息
+
+```properties
+创建角色：Create role 角色名称
+
+给用户赋予角色：grant 角色 to 用户
+
+eg:
+Create user W_vole identified by 123456 default tablespace 表空间
+grant DBA TO W_vole
+```
+
+
+
+
 

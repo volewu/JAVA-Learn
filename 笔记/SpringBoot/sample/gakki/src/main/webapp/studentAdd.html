@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生添加</title>
+    <script src="/static/jquery.min.js"></script>
+    <script type="text/javascript">
+        function addStudent() {
+            $.post("/student/add",{name:$("#name").val(),age:$("#age").val()},function (result) {
+                alert(result);
+            });
+        }
+    </script>
+</head>
+<body>
+
+        姓名：<input type="text" id="name" name="name"/><br/>
+        年龄：<input type="text" id="age" name="age"/><br/>
+        <input type="button" onclick="addStudent()" value="提交"/>
+
+</body>
+</html>

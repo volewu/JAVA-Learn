@@ -2,7 +2,7 @@
 
 #### 1. 从官网下载相应的组件
 
-![editorMd](E:\资料\java\editorMd.PNG)
+![editorMd](https://upload-images.jianshu.io/upload_images/2192622-326cbf172ea947e0.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/613)
 
 
 
